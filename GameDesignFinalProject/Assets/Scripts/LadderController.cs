@@ -15,16 +15,11 @@ public class LadderController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            //this.transform.position += this.transform.right * Time.deltaTime * speed;
-            //move += Vector3.right;
-            Vector2 move = new Vector2(0.03f, 0f);
-            transform.Translate(move);
+            transform.position += Vector3.right * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            //move -= Vector3.right;
-            Vector2 move = new Vector2(-0.03f, 0f);
-            transform.Translate(move);
+            transform.position -= Vector3.right * Time.deltaTime;
         }
     }
 }

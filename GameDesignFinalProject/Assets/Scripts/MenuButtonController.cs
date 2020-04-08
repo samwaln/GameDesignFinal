@@ -10,4 +10,9 @@ public class MenuButtonController : MonoBehaviour
         SceneManager.LoadScene("Level1");
         Debug.Log("Loaded scene");
     }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Level1");
+        Debug.Log("Reloaded scene");
+    }
 }

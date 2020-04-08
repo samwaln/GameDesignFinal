@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class ButtonController : MonoBehaviour
@@ -31,10 +32,21 @@ public class ButtonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moving)
+        if (PrincessController.dead == false)
         {
-            princess.transform.position += this.transform.right * Time.deltaTime * 0.7f;
-            //princess.AddForce(move * 3);
+            if (moving)
+            {
+                princess.transform.position += this.transform.right * Time.deltaTime * 0.7f;
+                //princess.AddForce(move * 3);
+            }
         }
+    }
+
+    public void RestartLevel()
+    {
+        Debug.Log("restart");
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        SceneManager.LoadScene(sceneName);
     }
 }
