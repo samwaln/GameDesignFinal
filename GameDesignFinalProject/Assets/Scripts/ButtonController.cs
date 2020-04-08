@@ -32,10 +32,13 @@ public class ButtonController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (moving)
+        if (PrincessController.dead == false)
         {
-            princess.transform.position += this.transform.right * Time.deltaTime * 0.7f;
-            //princess.AddForce(move * 3);
+            if (moving)
+            {
+                princess.transform.position += this.transform.right * Time.deltaTime * 0.7f;
+                //princess.AddForce(move * 3);
+            }
         }
     }
 

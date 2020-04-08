@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 public class PrincessController : MonoBehaviour
 {
     public GameObject restartButton;
+    public GameObject deadText;
+    public static bool dead;
 
     // Start is called before the first frame update
     void Start()
     {
         restartButton.SetActive(false);
+        deadText.SetActive(false);
+        dead = false;
     }
 
     // Update is called once per frame
@@ -23,16 +27,21 @@ public class PrincessController : MonoBehaviour
     {
         if (coll.tag == "Hazard")
         {
-            Debug.Log("hazard");
+            dead = true;
+            Debug.Log(dead);
             restartButton.SetActive(true);
+            deadText.SetActive(true);
         }
-    }
-
-    public void RestartLevel()
-    {
-        Debug.Log("restart");
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        SceneManager.LoadScene(sceneName);
+        if (coll.tag == "Safety")
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
+            string sceneName = currentScene.name;
+            int level = (int)(name[name.Length - 1]);
+            if (sceneName == "Level1")
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
+            SceneManager.LoadScene("Level" + (level + 1).ToString());
+        }
     }
 }
